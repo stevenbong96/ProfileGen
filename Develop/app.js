@@ -13,73 +13,102 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+
+
 // inquirer.prompt([
 //     {
 //         name:"addPosition",
 //         message:"Select position that you would like to put in the team",
 //         type:"list",
-//         choices:["Manager","Engineer", "Intern", "Team is full!"]
+//         choices:["Manager","Engineer", "Intern", "I don't want to add another member!"]
 //     },
-//     {
-//         name:"managerName",
-//         message:"Who is your manager?"
-//     },
-//     {
-//         name:"managerID",
-//         message:"What's your manager ID number?"
-//     },
-//     {
-//         name:"managerEmail",
-//         message:"What's' your manager email address?"
-//     },
-//     {
-//         name:"managerPhone",
-//         message:"What's your manager phone number?"
-//     },
-//     {
-//         name:"engineerName",
-//         message:"What's the engineer's name?"
-//     },
-//     {
-//         name:"engineerID",
-//         message:"What's the engineer's ID?"
-//     },
-//     {
-//         name:"engineerEmail",
-//         message:"What's the engineer's email?"
-//     },
-//     {
-//         name:"engineerGithub",
-//         message:"What's the engineer's Github username?"
-//     },
-//     {
-//         name:"internName",
-//         message:"What's the intern's name?"
-//     },
-//     {
-//         name:"internID",
-//         message:"What's the intern's ID?"
-//     },
-//     {
-//         name:"internEmail",
-//         message:"What's the intern's email?"
-//     },
-//     {
-//         name:"internColl",
-//         message:"What's the intern's college name?"
-//     },
-// ]).then(function(response){
-//     console.log(response);
-// })
+//     ]).then(function(response){
+//         console.log(response.addPosition)
+//         if(response.addPosition === "Manager"){
+//             inquirer.prompt([
+//                 {
+//                     name:"managerName",
+//                     message:"Who is your manager?"
+//                 },
+//                 {
+//                     name:"managerID",
+//                             message:"What's your manager ID number?"
+//                 },
+//                 {
+//                     name:"managerEmail",
+//                     message:"What's' your manager email address?"
+//                 },
+//                 {
+//                     name:"managerPhone",
+//                     message:"What's your manager phone number?"
+//                 },
+//             ]).then(function(managerResp){
+//                 console.log(managerResp);
+//             })
+//         } else if(response.addPosition === "Engineer"){
+//             inquirer.prompt([
+//                 {
+//                     name:"engineerName",
+//                     message:"What's the engineer's name?"
+//                 },
+//                 {
+//                     name:"engineerID",
+//                     message:"What's the engineer's ID?"
+//                 },
+//                 {
+//                     name:"engineerEmail",
+//                     message:"What's the engineer's email?"
+//                 },
+//                 {
+//                     name:"engineerGithub",
+//                     message:"What's the engineer's Github username?"
+//                 },
+//             ]).then(function(engineerResp){
+//                 console.log(engineerResp)
+//             })
+//         } else if(response.addPosition === "Intern"){
+//             inquirer.prompt([
+//                 {
+//                     name:"internName",
+//                     message:"What's the intern's name?"
+//                 },
+//                 {
+//                     name:"internID",
+//                     message:"What's the intern's ID?"
+//                 },
+//                 {
+//                     name:"internEmail",
+//                     message:"What's the intern's email?"
+//                 },
+//                 {
+//                     name:"internColl",
+//                     message:"What's the intern's college name?"
+//                 },
+//             ]).then(function(internResp){
+//                 console.log(internResp)
+//             })
+//         } else {
+//             return // console.log("Sure! Go to browser to see your team member!")
+//         }
+//     })
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
+// function renderPage(){
+//     return `
+    
+//     `
+// }
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
+
+
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
