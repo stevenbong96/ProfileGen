@@ -13,94 +13,112 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+var aggregateInfo = [];
 
-
-// inquirer.prompt([
-//     {
-//         name:"addPosition",
-//         message:"Select position that you would like to put in the team",
-//         type:"list",
-//         choices:["Manager","Engineer", "Intern", "I don't want to add another member!"]
-//     },
-//     ]).then(function(response){
-//         console.log(response.addPosition)
-//         if(response.addPosition === "Manager"){
-//             inquirer.prompt([
-//                 {
-//                     name:"managerName",
-//                     message:"Who is your manager?"
-//                 },
-//                 {
-//                     name:"managerID",
-//                             message:"What's your manager ID number?"
-//                 },
-//                 {
-//                     name:"managerEmail",
-//                     message:"What's' your manager email address?"
-//                 },
-//                 {
-//                     name:"managerPhone",
-//                     message:"What's your manager phone number?"
-//                 },
-//             ]).then(function(managerResp){
-//                 console.log(managerResp);
-//             })
-//         } else if(response.addPosition === "Engineer"){
-//             inquirer.prompt([
-//                 {
-//                     name:"engineerName",
-//                     message:"What's the engineer's name?"
-//                 },
-//                 {
-//                     name:"engineerID",
-//                     message:"What's the engineer's ID?"
-//                 },
-//                 {
-//                     name:"engineerEmail",
-//                     message:"What's the engineer's email?"
-//                 },
-//                 {
-//                     name:"engineerGithub",
-//                     message:"What's the engineer's Github username?"
-//                 },
-//             ]).then(function(engineerResp){
-//                 console.log(engineerResp)
-//             })
-//         } else if(response.addPosition === "Intern"){
-//             inquirer.prompt([
-//                 {
-//                     name:"internName",
-//                     message:"What's the intern's name?"
-//                 },
-//                 {
-//                     name:"internID",
-//                     message:"What's the intern's ID?"
-//                 },
-//                 {
-//                     name:"internEmail",
-//                     message:"What's the intern's email?"
-//                 },
-//                 {
-//                     name:"internColl",
-//                     message:"What's the intern's college name?"
-//                 },
-//             ]).then(function(internResp){
-//                 console.log(internResp)
-//             })
-//         } else {
-//             return // console.log("Sure! Go to browser to see your team member!")
-//         }
-//     })
+function getInformation(){
+    inquirer.prompt([
+            {
+                name:"addPosition",
+                message:"Select position that you would like to put in the team",
+                type:"list",
+                choices:["Manager","Engineer", "Intern", "I don't want to add another member!"]
+            },
+            ]).then(function(basicInfo){
+                // console.log(basicInfo.addPosition)
+                if(basicInfo.addPosition === "Manager"){
+                    inquirer.prompt([
+                        {
+                            name:"name",
+                            message:"Who is your manager?"
+                        },
+                        {
+                            name:"id",
+                            message:"What's your manager ID number?"
+                        },
+                        {
+                            name:"email",
+                            message:"What's' your manager email address?"
+                        },
+                        {
+                            name:"officeNumber",
+                            message:"What's your manager office number?"
+                        },
+                    ]).then(function(managerResp){
+                        // console.log(managerResp);
+                        const manager = new Manager(managerResp.name, managerResp.id, managerResp.email, managerResp.officeNumber);
+                        aggregateInfo.push(manager);
+                        getInformation();
+                    })
+                } else if(basicInfo.addPosition === "Engineer"){
+                    inquirer.prompt([
+                        {
+                            name:"name",
+                            message:"What's the engineer's name?"
+                        },
+                        {
+                            name:"id",
+                            message:"What's the engineer's ID?"
+                        },
+                        {
+                            name:"email",
+                            message:"What's the engineer's email?"
+                        },
+                        {
+                            name:"github",
+                            message:"What's the engineer's Github username?"
+                        },
+                    ]).then(function(engineerResp){
+                        // console.log(engineerResp);
+                        const engineer = new Engineer(engineerResp.name, engineerResp.id, engineerResp.email, engineerResp.github);
+                        aggregateInfo.push(engineer);
+                        getInformation();
+                    })
+                } else if(basicInfo.addPosition === "Intern"){
+                    inquirer.prompt([
+                        {
+                            name:"name",
+                            message:"What's the intern's name?"
+                        },
+                        {
+                            name:"id",
+                            message:"What's the intern's ID?"
+                        },
+                        {
+                            name:"email",
+                            message:"What's the intern's email?"
+                        },
+                        {
+                            name:"school",
+                            message:"What's the intern's college name?"
+                        },
+                    ]).then(function(internResp){
+                        // console.log(internResp);
+                        const intern = new Intern(internResp.name, internResp.id, internResp.email, internResp.school);
+                        aggregateInfo.push(intern);
+                        getInformation();
+                    })
+                } else {
+                    createHTML();
+                }
+            })
+}
+// 
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
-// function renderPage(){
-//     return `
-    
-//     `
-// }
+function createHTML(){
+    fs.writeFile(outputPath, render(aggregateInfo), function(err){
+        if(err){
+            throw err
+        }
+        console.log("Success!!!")
+    })
+    return
+}
+
+getInformation();
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
