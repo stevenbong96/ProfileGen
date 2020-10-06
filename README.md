@@ -16,7 +16,7 @@ This application requires few installation to made, which are the inquirer and j
 ## Usage 
 If there is any confusion in using this application, then users can utitlize the video on this repository. The full video on showing how to use this team proile generator will be shown below:
   
-![Example Instructions](./questionsprompt.JPG)
+![Example Instructions](./demo.gif)
   
 ## Contributions
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md) 
@@ -37,6 +37,9 @@ Proof of test result of this application
 ![Test Results](./TestResult.JPG)
 
 ## License 
-This is the section where you will put the license that you have been using to create your HW, projects, or assignments
   
 MIT License
+
+## Application Screenshot
+
+![Screenshot](./screenshot.JPG)
