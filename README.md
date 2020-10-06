@@ -30,7 +30,12 @@ Language Contributions
 ![Total Language](https://img.shields.io/github/languages/count/stevenbong96/ProfileGen)
 
 To use the badges, feel free to check [shields.io](https://shields.io/) website for variety of badges
-  
+
+## Test Instruction 
+Proof of test result of this application 
+
+![Test Results](./TestResult.JPG)
+
 ## License 
 This is the section where you will put the license that you have been using to create your HW, projects, or assignments
   
